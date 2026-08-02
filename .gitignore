@@ -1,0 +1,15 @@
+# Build output
+/build/
+
+# Compiler-generated files
+*.o
+*.d
+
+# Crash dumps
+/core
+core.[0-9]*
+vgcore.*
+
+# Generated tooling metadata
+/compile_commands.json
+/.cache/
