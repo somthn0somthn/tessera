@@ -130,6 +130,6 @@ int main(void)
     test_free_block_reused();
     test_destroy_fails_on_nonempty();
 
-    puts("All tests passed.");
+    puts("All block_pool tests passed.");
     return 0;
 }
