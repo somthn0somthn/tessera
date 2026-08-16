@@ -5,34 +5,41 @@
 #include <stddef.h>
 #include <stdint.h>
 
-typedef enum EntryState {
+//  Slot states used by the open-addressed hash index.
+typedef enum EntryState
+{
     EMPTY,
     OCCUPIED,
     TOMBSTONE
 } EntryState;
 
-typedef struct HashEntry {
+// Represents one slot in the hash index. Each occupied slot maps a non-negative
+// 64-bit key to a block pointer.
+typedef struct HashEntry
+{
     uint64_t key;
     void *block;
     EntryState state;
 } HashEntry;
 
-typedef struct HashIndex {
+// HashIndex owns an array of HashEntry slots and tracks table metadata.
+typedef struct HashIndex
+{
     size_t entry_count;
     size_t capacity;
-    HashEntry *table;
+    HashEntry *slots;
 } HashIndex;
 
 int hi_init(HashIndex *index, size_t capacity);
 
 int hi_insert(HashIndex *index, uint64_t key, void *block);
 
-void *hi_lookup(HashIndex *index, uint64_t key);
+void *hi_lookup(const HashIndex *index, uint64_t key);
 
 void *hi_remove(HashIndex *index, uint64_t key);
 
 int hi_destroy(HashIndex *index);
 
-int hi_size(HashIndex *index); 
+size_t hi_size(const HashIndex *index);
 
 #endif

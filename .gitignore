@@ -13,3 +13,4 @@ vgcore.*
 # Generated tooling metadata
 /compile_commands.json
 /.cache/
+.vscode
