@@ -40,6 +40,9 @@ void *hi_remove(HashIndex *index, uint64_t key);
 
 int hi_destroy(HashIndex *index);
 
-size_t hi_size(const HashIndex *index);
+static inline size_t hi_size(const HashIndex *index)
+{
+    return index->entry_count;
+}
 
 #endif

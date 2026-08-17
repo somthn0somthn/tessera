@@ -1,5 +1,5 @@
 # Build output
-/build/git 
+/build/
 
 # Compiler-generated files
 *.o
